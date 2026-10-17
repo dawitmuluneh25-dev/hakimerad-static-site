@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build output (regenerate with `npm run build`)
+dist/
+
+# Coverage and cache
+coverage/
+.cache/
+*.log
+
+# Environment files — a static site should never need real secrets, but guard anyway
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Local tooling
+.prettier-cache/
+.eslintcache
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Note on assets that ARE tracked but deliberately not deployed
+# (see scripts/build.mjs EXCLUDE and MODERNIZATION_REPORT.md):
+#   hakimerad_deploy.zip   — deleted 16 Oct 2026; it was a stale deploy snapshot
+#                            and is still recoverable from git history
+#   images/favicon web/    — superseded off-brand icon set
+#   vidios/                — stock hero video (poster used instead)
+#   photos/                — unused portrait placeholders

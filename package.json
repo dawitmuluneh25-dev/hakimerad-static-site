@@ -1,0 +1,32 @@
+{
+  "name": "hakimerad-website",
+  "version": "2.0.0",
+  "private": true,
+  "description": "HakimeRAD Teleradiology marketing site — static HTML/CSS/JS, no bundler.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs",
+    "lint": "eslint \"js/**/*.js\" \"scripts/**/*.mjs\"",
+    "lint:fix": "eslint \"js/**/*.js\" \"scripts/**/*.mjs\" --fix",
+    "format": "prettier --write \"js/**/*.js\" \"css/**/*.css\" \"scripts/**/*.mjs\" \"*.md\"",
+    "format:check": "prettier --check \"js/**/*.js\" \"css/**/*.css\" \"scripts/**/*.mjs\"",
+    "assets": "python scripts/build_assets.py",
+    "qr": "node scripts/make-qr.mjs",
+    "serve": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "verify:live": "node scripts/verify-live.mjs"
+  },
+  "keywords": [],
+  "author": "HakimeRAD",
+  "license": "UNLICENSED",
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "jsqr": "^1.4.0",
+    "prettier": "^3.6.2",
+    "qrcode": "^1.5.4"
+  }
+}

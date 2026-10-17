@@ -1,0 +1,40 @@
+/*
+ * HakimeRAD — self-hosted webfonts
+ *
+ * Typeface: IBM Plex Sans (brand guide §3, decision D-005).
+ * Licence: SIL Open Font License 1.1 — see fonts/LICENSE-IBMPlexSans.txt.
+ * Files are subset to Latin + the punctuation/symbols this site uses and
+ * stored locally so the site makes no third-party font request.
+ */
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/IBMPlexSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/IBMPlexSans-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/IBMPlexSans-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/IBMPlexSans-Bold.woff2') format('woff2');
+}

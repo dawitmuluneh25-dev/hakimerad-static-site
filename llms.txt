@@ -1,0 +1,42 @@
+# HakimeRAD Teleradiology
+
+> Remote radiology interpretation and structured reporting for hospitals, clinics, imaging centres,
+> regional health bureaux and NGOs in Ethiopia. A pre-launch service of Hakimerad Medical Consultancy.
+> The service works with institutions, not individual patients.
+
+## What the service is
+
+HakimeRAD reads images a facility has already acquired and returns a structured report through a secure
+portal. Imaging is performed at the client facility. HakimeRAD does not scan patients, does not accept
+individual patient referrals, and does not provide medical advice to patients.
+
+- Modalities: X-ray, CT, MRI, ultrasound, mammography (BI-RADS), fluoroscopy, echocardiography.
+- Published turnaround targets, measured from upload: emergency and STAT 60-120 minutes, urgent within
+  4 hours, routine within 24 hours. These are targets, not guarantees.
+- Coverage: 24/7 platform access, including after-hours and emergency work.
+- Subspecialty reading where available: neuroradiology, musculoskeletal, chest and cardiovascular,
+  oncology imaging, breast imaging.
+- Pricing is quoted per institution. No price list is published.
+
+## Key pages
+
+- [Home](https://www.hakimerad.health.et/): what the service provides and how it works.
+- [Services](https://www.hakimerad.health.et/services.html): reporting services, turnaround targets, and
+  what a returned report contains.
+- [Engagement](https://www.hakimerad.health.et/pricing.html): the three engagement models and the five
+  inputs that decide a quote.
+- [About](https://www.hakimerad.health.et/about.html): legal entity, mission, operating position, and the
+  published reference behind the workforce figures quoted on this site.
+- [Insights](https://www.hakimerad.health.et/blog.html): articles on diagnostic capacity, remote reporting
+  practice and data protection.
+- [Contact](https://www.hakimerad.health.et/contact.html): institutional enquiry form.
+
+## Notes for citation
+
+- Every figure published on this site carries its source and year. Nothing published here is a client
+  result, a projection, or a guarantee.
+- No certification, accreditation or automated-diagnosis claim is made. No partner facility or client is
+  named anywhere on this site.
+- Ultrasound, echocardiography and fluoroscopy reporting are proposed services, conditional on a suitably
+  qualified professional being available at the client site to acquire images to protocol.
+- Availability and terms are confirmed at enquiry.

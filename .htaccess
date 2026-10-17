@@ -1,0 +1,143 @@
+# HakimeRAD website — Apache configuration (cPanel, shared hosting, any Apache host).
+#
+# Applies only where the site is served by Apache. If the site is deployed to a
+# platform that does not read .htaccess (GitHub Pages, Netlify, Cloudflare
+# Pages, Vercel), set the same headers at that platform's configuration layer —
+# see DEPLOYMENT.md, "Security headers on other hosts".
+#
+# Verify after every deploy with:
+#   curl -sI https://www.hakimerad.health.et/ | Select-String -Pattern 'strict-transport|x-content-type|content-security|referrer-policy'
+
+# ------------------------------------------------------------------ #
+# Force HTTPS and a single canonical host
+# ------------------------------------------------------------------ #
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://www.hakimerad.health.et/$1 [R=301,L]
+
+  # Collapse the apex onto www so canonical URLs match the sitemap.
+  RewriteCond %{HTTP_HOST} ^hakimerad\.health\.et$ [NC]
+  RewriteRule ^(.*)$ https://www.hakimerad.health.et/$1 [R=301,L]
+
+  # Extensionless URLs are a nicety, not a requirement. Keep them only if the
+  # host supports the internal rewrite.
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^([^.]+)$ $1.html [L]
+</IfModule>
+
+# ------------------------------------------------------------------ #
+# Security headers
+# ------------------------------------------------------------------ #
+<IfModule mod_headers.c>
+  # 15552000 = 180 days. Raise to 31536000 once HSTS preload is intended.
+  Header always set Strict-Transport-Security "max-age=15552000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+
+  # Content Security Policy.
+  #  - 'unsafe-inline' is required for style-src because the pages carry a small
+  #    amount of inline style used for spacing overrides.
+  #  - script-src has no 'unsafe-inline': every script is an external file.
+  #  - cdnjs is allowed for Font Awesome; fonts.gstatic/Google Fonts are NOT
+  #    needed because IBM Plex Sans is self-hosted.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data:; media-src 'self'; form-action 'self' https://api.web3forms.com; connect-src 'self' https://api.web3forms.com; frame-src https://maps.google.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+
+  # Do not advertise the server stack beyond what is necessary.
+  Header unset X-Powered-By
+</IfModule>
+
+# ------------------------------------------------------------------ #
+# Compression
+# ------------------------------------------------------------------ #
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/manifest+json image/svg+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS application/manifest+json image/svg+xml
+</IfModule>
+
+# ------------------------------------------------------------------ #
+# Caching
+# ------------------------------------------------------------------ #
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML is not cached, so a content change is visible immediately.
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS and JS carry no content hash, so keep them short and rely on the
+  # no-cache HTML to pick up new versions quickly.
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+
+  # Fonts and images are effectively immutable within a brand revision.
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType application/manifest+json "access plus 1 week"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(woff2|png|jpg|jpeg|svg|ico|webp)$">
+    Header set Cache-Control "public, max-age=2592000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# ------------------------------------------------------------------ #
+# MIME types
+# ------------------------------------------------------------------ #
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType application/manifest+json .webmanifest
+  AddType image/svg+xml .svg
+</IfModule>
+
+# ------------------------------------------------------------------ #
+# Custom error document (apache default look is replaced by the site's own)
+# ------------------------------------------------------------------ #
+ErrorDocument 404 /404.html
+
+# ------------------------------------------------------------------ #
+# Directory listing off
+# ------------------------------------------------------------------ #
+Options -Indexes
+
+# ------------------------------------------------------------------ #
+# Defence in depth: never serve source archives or working documents
+# ------------------------------------------------------------------ #
+# A release archive was once uploaded into the document root and was
+# publicly downloadable. Nothing in dist/ matches these patterns, so this
+# only ever blocks something that was not supposed to be here.
+#
+# Implemented with mod_rewrite, NOT with <FilesMatch> + "Require all denied".
+# Reason: mod_authz_core is not loaded on this host, so an <IfModule> wrapper
+# around the Require form is skipped SILENTLY and the rule does nothing - which
+# is exactly what happened to the first version of this block, and why it failed
+# to block the archive that had already been uploaded. mod_rewrite is confirmed
+# loaded here, because the HTTPS redirect above depends on it.
+#
+# Verify after every deploy: requesting a nonexistent .zip must return 403
+# (rule active), not the site's own 404 (rule inert).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule \.(zip|tar|gz|tgz|md|docx|xlsx|pptx|bak|log)$ - [F,L,NC]
+</IfModule>

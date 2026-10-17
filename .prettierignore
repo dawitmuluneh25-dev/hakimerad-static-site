@@ -1,0 +1,16 @@
+# Generated and vendor output — never formatted.
+dist/
+node_modules/
+fonts/
+images/
+
+# css/style.css is the pre-existing stylesheet. It is valid CSS and is checked
+# for structural errors by `npm run build`, but it is excluded from *formatting*
+# on purpose: Prettier reflows its one-property-per-line style into a ~2,500-line
+# whitespace-only diff, which would bury the substantive edits made during this
+# modernization in unreviewable churn. New CSS lives in css/brand-layer.css,
+# which IS formatted. Re-include this file when the stylesheet is next rewritten.
+css/style.css
+
+# Third-party verification and hand-off documents.
+googlef76bff2c6a9dc71b.html

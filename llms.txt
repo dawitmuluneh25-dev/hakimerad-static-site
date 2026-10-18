@@ -20,16 +20,16 @@ individual patient referrals, and does not provide medical advice to patients.
 
 ## Key pages
 
-- [Home](https://dawitmuluneh25-dev.github.io/hakimerad-static-site/): what the service provides and how it works.
-- [Services](https://dawitmuluneh25-dev.github.io/hakimerad-static-site/services.html): reporting services, turnaround targets, and
+- [Home](https://www.hakimerad.health.et/): what the service provides and how it works.
+- [Services](https://www.hakimerad.health.et/services.html): reporting services, turnaround targets, and
   what a returned report contains.
-- [Engagement](https://dawitmuluneh25-dev.github.io/hakimerad-static-site/pricing.html): the three engagement models and the five
+- [Engagement](https://www.hakimerad.health.et/pricing.html): the three engagement models and the five
   inputs that decide a quote.
-- [About](https://dawitmuluneh25-dev.github.io/hakimerad-static-site/about.html): legal entity, mission, operating position, and the
+- [About](https://www.hakimerad.health.et/about.html): legal entity, mission, operating position, and the
   published reference behind the workforce figures quoted on this site.
-- [Insights](https://dawitmuluneh25-dev.github.io/hakimerad-static-site/blog.html): articles on diagnostic capacity, remote reporting
+- [Insights](https://www.hakimerad.health.et/blog.html): articles on diagnostic capacity, remote reporting
   practice and data protection.
-- [Contact](https://dawitmuluneh25-dev.github.io/hakimerad-static-site/contact.html): institutional enquiry form.
+- [Contact](https://www.hakimerad.health.et/contact.html): institutional enquiry form.
 
 ## Notes for citation
 

@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HakimeRAD Insights</title>
-    <link>https://dawitmuluneh25-dev.github.io/hakimerad-static-site/blog.html</link>
+    <link>https://www.hakimerad.health.et/blog.html</link>
     <description>Insights on teleradiology, diagnostic imaging and radiology capacity in Ethiopia, from HakimeRAD Teleradiology.</description>
     <language>en-et</language>
     <copyright>HakimeRAD Teleradiology, a service of Hakimerad Medical Consultancy</copyright>
     <lastBuildDate>Sun, 18 Oct 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://dawitmuluneh25-dev.github.io/hakimerad-static-site/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://www.hakimerad.health.et/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>How many radiologists does Ethiopia have?</title>
-      <link>https://dawitmuluneh25-dev.github.io/hakimerad-static-site/blog-post-1.html</link>
-      <guid isPermaLink="true">https://dawitmuluneh25-dev.github.io/hakimerad-static-site/blog-post-1.html</guid>
+      <link>https://www.hakimerad.health.et/blog-post-1.html</link>
+      <guid isPermaLink="true">https://www.hakimerad.health.et/blog-post-1.html</guid>
       <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
       <description>The published figures on Ethiopia's radiologist workforce, their sources and year — and where the shortage bites hardest operationally.</description>
     </item>
     <item>
       <title>What remote reporting actually changes at a facility without a radiologist</title>
-      <link>https://dawitmuluneh25-dev.github.io/hakimerad-static-site/blog-post-2.html</link>
-      <guid isPermaLink="true">https://dawitmuluneh25-dev.github.io/hakimerad-static-site/blog-post-2.html</guid>
+      <link>https://www.hakimerad.health.et/blog-post-2.html</link>
+      <guid isPermaLink="true">https://www.hakimerad.health.et/blog-post-2.html</guid>
       <pubDate>Mon, 12 Oct 2026 00:00:00 +0000</pubDate>
       <description>What actually changes at a facility without a radiologist when reporting is remote: the workflow, the turnaround, and the parts that stay your responsibility.</description>
     </item>
     <item>
       <title>Nine questions to ask a teleradiology provider before you sign</title>
-      <link>https://dawitmuluneh25-dev.github.io/hakimerad-static-site/blog-post-3.html</link>
-      <guid isPermaLink="true">https://dawitmuluneh25-dev.github.io/hakimerad-static-site/blog-post-3.html</guid>
+      <link>https://www.hakimerad.health.et/blog-post-3.html</link>
+      <guid isPermaLink="true">https://www.hakimerad.health.et/blog-post-3.html</guid>
       <pubDate>Fri, 09 Oct 2026 00:00:00 +0000</pubDate>
       <description>Nine questions to put to any teleradiology provider before you sign — on turnaround, escalation, data protection, pricing and exit terms.</description>
     </item>

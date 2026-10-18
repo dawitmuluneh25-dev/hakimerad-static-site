@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Answer-engine crawlers are explicitly welcome: this site wants its published,
+# sourced material to be quotable in AI answers.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://dawitmuluneh25-dev.github.io/hakimerad-static-site/sitemap.xml

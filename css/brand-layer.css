@@ -1,0 +1,1031 @@
+/* ==========================================================================
+   HAKIMERAD BRAND SYSTEM & QUALITY LAYER
+   Added during the October 2026 website modernization.
+   Reference: social media/hakimerad_marketing/05_BRAND_AND_CREATIVE_GUIDE.md
+   Everything here derives from the four brand tokens declared in :root.
+   ========================================================================== */
+
+/* --- Skip link: one per page, visible on focus, above the fixed header --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0.5rem;
+  z-index: 10000;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--skip-link-bg);
+  color: var(--skip-link-color);
+  font-weight: 600;
+  border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Kept separate on purpose: an unrecognised selector invalidates the whole
+   rule, so grouping :focus-visible with :focus would remove the skip link's
+   visible state in browsers that do not know :focus-visible. */
+.skip-link:focus-visible {
+  top: 0;
+}
+
+/* --- Focus indication: visible for keyboard users, quiet for pointer users --- */
+:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* Anchored sections clear the fixed header instead of hiding beneath it. */
+:target,
+section[id],
+main [id] {
+  scroll-margin-top: 96px;
+}
+
+/* Guard against horizontal overflow at every breakpoint. */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* --- Pre-launch announcement bar -----------------------------------------
+   Brand guide §7: the pre-launch qualifier is mandatory wherever the service
+   is described. It is repeated here so it is visible on every page.
+   ------------------------------------------------------------------------- */
+.state-banner {
+  background-color: var(--navy);
+  color: var(--body-on-navy);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.35);
+}
+
+.state-banner strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.state-banner a {
+  color: var(--cyan);
+  text-decoration: underline;
+}
+
+/* --- Header / wordmark --------------------------------------------------- */
+.header .logo-link {
+  gap: 0;
+  text-decoration: none;
+}
+
+.logo-link:hover .logo-navy,
+.logo-link:hover .logo-blue,
+.logo-link:hover .logo-accent,
+.logo-link:hover .logo-orange {
+  color: var(--clinical-blue);
+}
+
+.site-entity-line {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--gray-color);
+}
+
+/* --- Hero: brand poster base layer + optional video ---------------------- */
+.hero {
+  position: relative;
+  background-color: var(--navy);
+  background-image: url('../images/hero-poster.jpg');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+/* Below this width the 1280-wide poster is pixel-identical on screen and 34 KB
+   instead of 80 KB. The matching preload hints live in each page's <head>. */
+@media (max-width: 1280px) {
+  .hero {
+    background-image: url('../images/hero-poster-1280.jpg');
+  }
+}
+
+.hero .video-background video {
+  display: none;
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .hero.is-video-ready .video-background video {
+    display: block;
+  }
+}
+
+.hero .video-background .overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(10, 37, 64, 0.96) 0%,
+    rgba(10, 37, 64, 0.88) 45%,
+    rgba(10, 37, 64, 0.62) 100%
+  );
+}
+
+.hero-content {
+  max-width: 42rem;
+  text-align: left;
+}
+
+.hero h1 {
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.hero .hero-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.75rem;
+}
+
+.hero .hero-lede {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--body-on-navy);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    background-position: center;
+    min-height: 0;
+    padding: 3rem 0;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+}
+
+/* --- Verified-fact strip (replaces the previous unverified statistics) --- */
+.facts {
+  background-color: var(--navy);
+  color: #ffffff;
+  padding: var(--spacing-lg) 0;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.fact-item {
+  border-left: 3px solid var(--cyan);
+  padding-left: 1rem;
+}
+
+.fact-value {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.fact-label {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--body-on-navy);
+  margin-top: 0.35rem;
+  line-height: 1.45;
+}
+
+.fact-source {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--gray-color);
+  margin-top: 0.5rem;
+}
+
+.facts .fact-source {
+  color: #8fa6bd;
+}
+
+/* --- Modality / capability grid ----------------------------------------- */
+.modality-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin-top: var(--spacing-md);
+}
+
+.modality-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: #ffffff;
+  border: 1px solid var(--light-gray);
+  border-left: 3px solid var(--clinical-blue);
+  border-radius: var(--border-radius-md);
+  padding: 1rem 1.125rem;
+}
+
+.modality-item i {
+  color: var(--clinical-blue);
+  font-size: 1.125rem;
+  margin-top: 0.2rem;
+}
+
+.modality-item h3 {
+  font-size: 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.modality-item p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--gray-color);
+}
+
+html.theme-dark .modality-item {
+  background-color: #0e2a45;
+  border-color: #1d4266;
+}
+
+/* When a card is itself a link (the 404 recovery list). */
+a.modality-item {
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+a.modality-item:hover {
+  border-left-color: var(--navy);
+  transform: translateY(-2px);
+}
+
+a.modality-item:focus-visible {
+  border-left-color: var(--navy);
+  transform: translateY(-2px);
+}
+
+/* `.fact-label` is tuned for navy fields (--body-on-navy #b0c4d6), but this
+   card is white in light mode, where it measured 1.79:1 — the label text was
+   effectively invisible. --gray-color is 5.1:1 on white. Dark mode flips the
+   card to #0e2a45, where the navy-field colour is correct again. */
+a.modality-item .fact-label {
+  color: var(--gray-color);
+}
+
+html.theme-dark a.modality-item .fact-label {
+  color: var(--body-on-navy);
+}
+
+a.modality-item .fact-value,
+a.modality-item .fact-label {
+  display: block;
+}
+
+a.modality-item .fact-value {
+  color: var(--navy);
+}
+
+html.theme-dark a.modality-item .fact-value {
+  color: var(--silver);
+}
+
+/* --- Turnaround targets table ------------------------------------------- */
+.targets-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-md);
+  font-size: 0.9375rem;
+}
+
+/* The caption is load-bearing context, not decoration, so it has to clear
+   AA. --gray-color (#5c7085) is 4.6:1 on Clean Silver but only 3.98:1 on the
+   --light-gray (#dde4ec) field these tables actually sit on;
+   --body-on-light-gray is 5.6:1 there. Dark mode flips that field to the
+   #0e2a45 navy surface, where --gray-color (#9fb4c8) is correct again.
+   This rule lives here and not in style.css because brand-layer.css is the
+   later stylesheet, so an equal-specificity rule there would win. */
+.targets-table caption {
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--body-on-light-gray);
+  padding-bottom: 0.75rem;
+}
+
+html.theme-dark .targets-table caption {
+  color: var(--gray-color);
+}
+
+.targets-table th,
+.targets-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.targets-table th {
+  font-weight: 600;
+  color: var(--navy);
+  background-color: var(--silver);
+}
+
+html.theme-dark .targets-table th {
+  color: var(--silver);
+  background-color: #0e2a45;
+}
+
+html.theme-dark .targets-table th,
+html.theme-dark .targets-table td {
+  border-bottom-color: #1d4266;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+/* --- Engagement models (pricing page, inquiry-only) --------------------- */
+.engagement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.engagement-card {
+  background-color: #ffffff;
+  border: 1px solid var(--light-gray);
+  border-radius: var(--border-radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.engagement-card.is-lead {
+  border-color: var(--clinical-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.engagement-card .engagement-kicker {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clinical-blue);
+}
+
+.engagement-card h3 {
+  margin: 0.5rem 0 0.75rem;
+}
+
+.engagement-card .engagement-price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+.engagement-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.engagement-card li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.engagement-card li::before {
+  content: '\2713';
+  position: absolute;
+  left: 0;
+  color: var(--clinical-blue);
+  font-weight: 700;
+}
+
+.engagement-card .engagement-footer {
+  margin-top: auto;
+}
+
+html.theme-dark .engagement-card {
+  background-color: #0e2a45;
+  border-color: #1d4266;
+}
+
+html.theme-dark .engagement-card .engagement-price {
+  color: var(--silver);
+}
+
+/* --- Forms: real submission states ------------------------------------- */
+.form-status {
+  margin-top: 1rem;
+  padding: 0.875rem 1rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  border-left: 3px solid var(--clinical-blue);
+  background-color: var(--silver);
+  color: var(--navy);
+}
+
+.form-status[data-state='error'] {
+  border-left-color: var(--danger-color);
+  background-color: #fdecea;
+  color: #7a1c17;
+}
+
+.form-status[data-state='success'] {
+  border-left-color: var(--success-color);
+  background-color: #e8f5ef;
+  color: #14523a;
+}
+
+.form-status[data-state='pending'] {
+  border-left-color: var(--clinical-blue);
+}
+
+html.theme-dark .form-status {
+  background-color: #0e2a45;
+  color: var(--silver);
+}
+
+html.theme-dark .form-status[data-state='error'] {
+  background-color: #3a1512;
+  color: #ffd9d5;
+}
+
+html.theme-dark .form-status[data-state='success'] {
+  background-color: #0d2e22;
+  color: #cdf0df;
+}
+
+.form-group input.error,
+.form-group textarea.error,
+.form-group select.error {
+  border-color: var(--danger-color);
+  box-shadow: 0 0 0 1px var(--danger-color);
+}
+
+.error-message {
+  display: block;
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--danger-color);
+}
+
+html.theme-dark .error-message {
+  color: #ffb3ad;
+}
+
+.form-hint {
+  display: block;
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--gray-color);
+}
+
+.required {
+  color: var(--clinical-blue);
+  font-weight: 700;
+}
+
+/* Submit button progress state */
+.btn[aria-busy='true'],
+.btn:disabled {
+  opacity: 0.72;
+  cursor: progress;
+}
+
+/* Honeypot — hidden from users, visible to naive bots. */
+.form-honeypot {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* --- Blog: empty state -------------------------------------------------- */
+.no-results {
+  display: none;
+  padding: var(--spacing-md);
+  border-left: 3px solid var(--clinical-blue);
+  background-color: var(--silver);
+  color: var(--navy);
+  border-radius: var(--border-radius-md);
+}
+
+.no-results.is-visible {
+  display: block;
+}
+
+html.theme-dark .no-results {
+  background-color: #0e2a45;
+  color: var(--silver);
+}
+
+/* --- Footer ------------------------------------------------------------- */
+.footer-entity {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--body-on-navy);
+  max-width: 34ch;
+}
+
+.footer-qualifier {
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: #8fa6bd;
+  border-top: 1px solid rgba(176, 196, 214, 0.2);
+  padding-top: 1rem;
+  margin-top: 1rem;
+  grid-column: 1 / -1;
+}
+
+/* --- Fieldsets, checkbox groups and consent ----------------------------- */
+.form-container fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--spacing-md);
+}
+
+.form-container fieldset > legend {
+  font-family: var(--heading-font);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--navy);
+  padding: 0 0 0.75rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+html.theme-dark .form-container fieldset > legend {
+  color: var(--silver);
+  border-bottom-color: #1d4266;
+}
+
+.checkbox-group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.checkbox-group > legend {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--navy);
+  padding: 0;
+  margin-bottom: 0.375rem;
+}
+
+html.theme-dark .checkbox-group > legend {
+  color: var(--silver);
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-grid label,
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.checkbox-grid input[type='checkbox'],
+.consent-label input[type='checkbox'] {
+  width: 1.125rem;
+  height: 1.125rem;
+  min-width: 1.125rem;
+  margin-top: 0.15rem;
+  accent-color: var(--clinical-blue);
+}
+
+.consent-group {
+  border-left: 3px solid var(--clinical-blue);
+  padding-left: 1rem;
+  margin-bottom: var(--spacing-md);
+}
+
+/* --- Reference lists ---------------------------------------------------- */
+.reference-list {
+  max-width: 72ch;
+  margin: 0 auto;
+  padding-left: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--gray-color);
+}
+
+.reference-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* --- FAQ: disclose pattern (button inside the heading) ------------------ */
+.faq-question h3 {
+  margin: 0;
+  width: 100%;
+}
+
+.faq-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-answer {
+  padding: 0 var(--spacing-md) var(--spacing-sm);
+}
+
+/* --- Blog article typography (brand tracking/line-height rules) --------- */
+.blog-full-article {
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-sm);
+}
+
+.blog-full-article p,
+.blog-full-article li {
+  line-height: 1.5;
+}
+
+.blog-full-article h2 {
+  letter-spacing: -0.008em;
+  line-height: 1.22;
+  margin-top: 2rem;
+}
+
+.blog-full-article h1 {
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.blog-full-article blockquote {
+  border-left: 3px solid var(--cyan);
+  margin: 1.75rem 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  color: var(--gray-color);
+  font-style: normal;
+  font-size: 1.0625rem;
+}
+
+/* --- Reduced motion ----------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero {
+    background-attachment: scroll;
+  }
+}
+
+/* --- Print -------------------------------------------------------------- */
+@media print {
+  .header,
+  .state-banner,
+  .theme-switcher,
+  .theme-float,
+  .mobile-menu-btn,
+  .video-background,
+  .newsletter,
+  .cta,
+  .footer-social,
+  .skip-link,
+  .testimonial-nav,
+  .blog-filters {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.75em;
+  }
+}
+
+/* ==========================================================================
+   LOGOGRAM + OPTIMISATION PASS — October 2026
+   The symbol half of the identity, applied to the header and footer, and the
+   fixes it surfaced. Loaded after style.css, so these rules win on equal
+   specificity without !important.
+   ========================================================================== */
+
+/* --- Logogram mark -------------------------------------------------------
+ * Inlined in the markup (so it costs no extra request) with the ring drawn in
+ * `currentColor`, which lets one asset carry both lockups the brand guide
+ * defines (guide s2):
+ *   light field -> Deep Navy ring + navy "Hakim" + Clinical Blue "eRAD"
+ *   navy field  -> White ring     + white "Hakim" + Clinical Blue "eRAD"
+ * The four squares keep their brand colours on either field.
+ * Geometry is generated by scripts/build_logogram.py; do not hand-edit.
+ */
+.logo-mark {
+  display: block;
+  flex: none;
+  width: 40px;
+  height: auto;
+  margin-right: 0.6rem;
+  color: var(--navy);
+  transition: color var(--transition-fast);
+}
+
+.logo-link:hover .logo-mark {
+  color: var(--clinical-blue);
+}
+
+.logo-link:focus-visible .logo-mark {
+  color: var(--clinical-blue);
+}
+
+@media (max-width: 768px) {
+  .logo-mark {
+    width: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-mark {
+    width: 32px;
+    margin-right: 0.45rem;
+  }
+}
+
+/* --- The wordmark must switch with its field -----------------------------
+ * `.logo-navy` is Deep Navy everywhere, which left the "Hakim" half of the
+ * wordmark invisible in two places: the navy footer, and the dark-mode header.
+ * Both now follow the navy-field lockup rule.
+ */
+.footer-logo .logo-navy,
+html.theme-dark .logo-navy {
+  color: #ffffff;
+}
+
+.footer-logo .logo-mark {
+  width: 44px;
+  margin-right: 0.6rem;
+  margin-bottom: 0;
+  color: #ffffff;
+}
+
+html.theme-dark .logo-mark {
+  color: #ffffff;
+}
+
+/* --- Contrast on the navy fact strips ------------------------------------
+ * `.section-subtitle` is a navy-tinted grey tuned for light fields; measured
+ * against the navy `.facts` sections it is 3.0:1. The brand's body-on-navy
+ * colour is 8.7:1 there.
+ *
+ * The same trap caught the heading. `.facts` sets `color: #ffffff`, but the
+ * global `h1, h2, h3, h4, h5, h6 { color: var(--dark-color) }` rule sets the
+ * colour on the element itself, so the strip's own `<h2 class="section-title">`
+ * inherited nothing and rendered Deep Navy on Deep Navy — a measured 1.0:1,
+ * i.e. an invisible heading. It affected index.html and pricing.html.
+ */
+.facts .section-title,
+.facts h2,
+.facts h3 {
+  color: #ffffff;
+}
+
+.facts .section-subtitle {
+  color: var(--body-on-navy);
+}
+
+/* --- Hero text colour ----------------------------------------------------
+ * `.hero` set `color: white` and then `color: var(--light-color)`, which is
+ * #061a2e in dark mode: every hero line without its own colour rule went
+ * near-invisible exactly when the theme was switched.
+ */
+.hero,
+html.theme-dark .hero {
+  color: #ffffff;
+}
+
+/* --- Focus visibility ----------------------------------------------------
+ * The theme toggle hides its real input, so the focus ring landed on a 0x0
+ * box and the control had no visible keyboard focus at all.
+ */
+.theme-switch:focus-within .slider-theme {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.theme-switch input:focus-visible + .slider-theme {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+/* --- Header elevation on scroll and mobile-menu scroll lock --------------
+ * js/main.js toggles both of these classes but nothing consumed them, so the
+ * scrolled state did nothing and the page kept scrolling behind the open
+ * mobile menu.
+ */
+.header.is-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* --- Mobile navigation ---------------------------------------------------
+ * Two breakpoints both styled `nav` inside the phone range, and the later one
+ * (max-width: 991.98px) won on every property they shared: the intended
+ * 300px drawer ended up full-viewport width with its list clipped to 500px by
+ * `overflow: hidden`. Pin the drawer geometry so the intent is unambiguous.
+ */
+@media (max-width: 768px) {
+  nav {
+    width: 300px;
+    max-height: none;
+    overflow-y: auto;
+  }
+}
+
+/* --- Clinical Blue as text on a dark surface -----------------------------
+ * Clinical Blue (#0077b6) is the accent for text on light fields, where it
+ * measures 4.6:1 on Clean Silver. On the dark surfaces (#0e2a45 cards, #061a2e
+ * page) it measures 3.0:1 and fails AA for body text. Cyan Beam is the same
+ * accent one step lighter and measures 5.9:1 there, so dark mode swaps to it.
+ *
+ * `:where()` keeps this selector at the specificity of the bare class. Without
+ * it, `html.theme-dark .btn-outline` (0,2,1) would outrank `.hero .btn-outline`
+ * (0,2,0) and silently recolour the outline buttons that sit on the hero poster
+ * and inside the `.cta` gradient, both of which are already correct as white.
+ */
+:where(html.theme-dark) .btn-outline {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+:where(html.theme-dark) .engagement-card .engagement-kicker {
+  color: var(--cyan);
+}
+
+/* Same failure mode: the required-field marker is a single character, so it
+   sits below the 2-character floor the contrast harness measures. */
+:where(html.theme-dark) .required {
+  color: var(--cyan);
+}
+
+/* ==========================================================================
+   HEADER + FOOTER LOCKUP, FLOATING THEME SWITCH, SOCIAL LINKS, PROPOSED SERVICES
+   Added October 2026. Loaded after style.css, so these rules win on equal
+   specificity.
+   ========================================================================== */
+
+/* --- The two-row lockup ---------------------------------------------------
+ * Logogram and wordmark share the top row; the motto sits under the wordmark
+ * rather than beside it. The header half of this is in style.css
+ * (.logo-lockup-row); this is the footer half.
+ */
+.footer-lockup-row {
+  display: flex;
+  align-items: center;
+}
+
+/* The wordmark sits in a row now, so its block-level bottom margin would push
+ * it off the logogram's centre line. */
+.footer-lockup-row h3 {
+  margin-bottom: 0;
+}
+
+/* --- Social links ---------------------------------------------------------
+ * The eight platforms the owner named, as official brand glyphs. Each URL comes
+ * from js/config.js; none is invented here. Until a URL is supplied the icon
+ * renders as a visible placeholder that cannot navigate - out of the tab order
+ * and announced as unavailable - so the row looks complete without a single
+ * guessed profile URL being published.
+ */
+.social-icon.is-pending {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.social-icon.is-pending:hover,
+.social-icon.is-pending:focus {
+  transform: none;
+  box-shadow: none;
+}
+
+.social-icon.is-pending:hover::before {
+  transform: scale(0);
+}
+
+.social-note {
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--body-on-navy);
+}
+
+/* --- Proposed services ----------------------------------------------------
+ * Ultrasound, echocardiography and fluoroscopy reporting are proposed services
+ * with conditions attached. The condition travels with the claim, so a reader
+ * who lands on one card or one modality sees it without hunting.
+ */
+.service-note,
+.modality-note {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.service-note {
+  margin: 0.75rem 0 1rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--cyan);
+}
+
+.modality-note {
+  max-width: 70ch;
+  margin: 1.5rem auto 0;
+}
+
+.modality-flag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--clinical-blue);
+}
+
+html.theme-dark .modality-flag {
+  color: var(--cyan);
+}
+
+html.theme-dark .service-note {
+  color: var(--body-on-navy);
+  border-left-color: var(--cyan);
+}

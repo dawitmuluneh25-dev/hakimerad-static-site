@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 375 323" width="375" height="323" role="img" aria-label="HakimeRAD">
+  <title>HakimeRAD</title>
+  <g fill="none" stroke="#0A2540" stroke-width="51.5">
+    <path d="M275.99 234.44A135.75 135.75 0 0 1 172.15 296.83"/>
+    <path d="M150.85 296.83A135.75 135.75 0 0 1 26.17 172.15"/>
+    <path d="M26.17 150.85A135.75 135.75 0 0 1 150.85 26.17"/>
+    <path d="M172.15 26.17A135.75 135.75 0 0 1 275.99 88.56"/>
+  </g>
+  <rect x="243" y="95.5" width="60" height="60" rx="12" fill="#0077B6"/>
+  <rect x="315" y="95.5" width="60" height="60" rx="12" fill="#00B4D8"/>
+  <rect x="243" y="167.5" width="60" height="60" rx="12" fill="#00B4D8"/>
+  <rect x="315" y="167.5" width="60" height="60" rx="12" fill="#0077B6"/>
+</svg>

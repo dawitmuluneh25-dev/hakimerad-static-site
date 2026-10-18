@@ -18,4 +18,3 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.hakimerad.health.et/sitemap.xml
